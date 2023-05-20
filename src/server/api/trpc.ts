@@ -17,12 +17,20 @@
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import { type Session } from "next-auth";
 
+type testVideo = {
+  id: String,
+  likes: String,
+  title: String,
+  thumbnailUrl: String
+  
+}
+
 import { getServerAuthSession } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { join } from "path";
 import { readFileSync } from "fs";
 const videos = readFileSync(join(__dirname, '../../../../../src/server/testData/videos.json'), "utf-8")
-const videoList: any = JSON.parse(videos)
+const videoList: testVideo = JSON.parse(videos);
 
 
 
