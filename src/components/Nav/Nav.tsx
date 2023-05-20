@@ -17,7 +17,7 @@ import Link from "next/link";
           <Link href={"#"}>Shows</Link>
         </li>
         <li className="m-5">
-          <Link href={"#"}>Upload</Link>
+          <Link href={"/upload"}>Upload</Link>
         </li>
       </ul>
     </nav>
