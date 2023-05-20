@@ -1,11 +1,11 @@
-import { map } from "@trpc/server/observable";
+
 import Image from "next/image"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 import spiderman from "../../../public/images/spiderman.jpg"
 import Link from "next/link";
 
 type videoProfile = {
-  id: Number;
+  id: number;
   title: string;
   thumbnailUrl: string;
   likes:   ReactNode;
@@ -20,9 +20,9 @@ const VideoGrid = (props: videoList) => {
     console.log(props);
     return (
         <section className="grid  gap-6 justify-center items-center   grid-cols-3 ">
-            {props.video?.map((el: videoProfile) => {
+            {props.video?.map((el: videoProfile, index) => {
                 return (
-                  <Link href="/player/1">
+                  <Link key={index} href="/player/1">
                     <section className="flex  flex-col border-slate-300 shadow-xl">
                       <Image
                         src={spiderman}

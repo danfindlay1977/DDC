@@ -1,16 +1,15 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
+
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import VideoGrid from "../components/videoGrid"
 import { api } from "~/utils/api";
-import Nav from "~/components/Nav/Nav";
 import Header from "~/components/Header/Header";
 
 const Home: NextPage = () => {
   const video = api.video.videoList.useQuery()
+  const userVideo = api.video.userVideoList.useQuery()
   return (
     <>
       <Head>
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
       <section className="bg-slate-950">
         <Header/>
         <main>
-          <VideoGrid video={video.data} />
+          <VideoGrid video={userVideo.data} />
         </main>
       </section>
     </>
