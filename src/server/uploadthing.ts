@@ -12,9 +12,9 @@ export const ourFileRouter = {
     // Set permissions and file types for this FileRoute
     .fileTypes(["image", "video"])
     .maxSize("1GB")
-    .middleware(async (req, res) => {
+    .middleware( (req, res) => {
       // This code runs on your server before upload
-      const user = await auth(req, res);
+      const user =  auth(req, res);
 
       // If you throw, the user will not be able to upload
       if (!user) throw new Error("Unauthorized");
@@ -22,7 +22,7 @@ export const ourFileRouter = {
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId: user.id };
     })
-    .onUploadComplete(async ({ metadata, file }) => {
+    .onUploadComplete( ({ metadata, file }) => {
       // This code RUNS ON YOUR SERVER after upload
       console.log("Upload complete for userId:", metadata.userId);
 
